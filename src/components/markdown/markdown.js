@@ -18,6 +18,7 @@ import { root as mdRoot } from 'mdast-builder';
 import mdxComponentMap from '../../utils/mdx-component-mapper';
 import indentNormalizer from '../../utils/indent-normalizer';
 import Notes from '../notes';
+import raw from 'rehype-raw';
 
 export const Markdown = ({
   componentMap: userProvidedComponentMap = mdxComponentMap,
@@ -84,7 +85,8 @@ export const Markdown = ({
 
     // Create the compiler for the _user-visible_ markdown (not presenter notes)
     const compiler = unified()
-      .use(remark2rehype)
+      .use(remark2rehype, { allowDangerousHtml: true })
+      .use(raw)
       .use(rehype2react, {
         createElement: React.createElement,
         components: componentMap
