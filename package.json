@@ -31,7 +31,8 @@
     "build-webpack-examples-md": "builder run build-webpack-base -- --config examples/md/webpack.config.js",
     "build-one-page": "node scripts/one-page.js",
     "build": "builder concurrent --buffer build-babel-esm build-babel-cjs build-webpack-lib build-webpack-lib-dev",
-    "build-examples": "builder concurrent --buffer build-webpack-examples-js build-webpack-examples-md"
+    "build-examples": "builder concurrent --buffer build-webpack-examples-js build-webpack-examples-md",
+    "prepare": "npm run build"
   },
   "author": "Formidable Labs <hello@formidable.com>",
   "license": "MIT",
